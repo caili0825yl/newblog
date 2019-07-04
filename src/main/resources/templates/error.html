@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请登录</title>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+
+</head>
+<body>
+请登录！
+<script>
+$(function () {
+    setTimeout(function(){//两秒后跳转
+        $(location).attr("href","/user/loginview");
+    },1500);
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+.sidebar-card{
+    background: rgba(0, 0, 0, .05);
+    max-height: 400px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 10%;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+
+.name{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.password{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.card{
+    background: rgba(0, 0, 0, .05);
+    padding: 15px 20px 15px 10px ;
+    width: inherit;
+    min-height: 180px;
+    margin-top: 5%;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}

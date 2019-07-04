@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人界面</title>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/basis.js"></script>
+    <script src="/js/user.js"></script>
+
+    <link rel="stylesheet" href="/css/user.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/basis.css">
+
+</head>
+
+<body>
+        <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd; ">
+                <div class="container">
+                    <div class="navbar-brand">OTAKU@部落格</div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/article/hotview">当前热门</a>
+                        </li>
+                        <li class="nav-item" id="myblog" style="display: none">
+                                <a class="nav-link" href="/user/userview">我的博客</a>
+                            </li>
+                    </ul>
+                    <form class="form-inline ml-auto">
+                            <div  class="input-group input-group-sm">
+                                <select id="searchResult" name="type">
+                                    <option value="article">文章</option>
+                                    <option value="nickname">昵称</option>
+                                    <option value="blog">博客</option>
+                                </select>
+                                <input type="text" class="form-control" id="searchContent">
+                                <button type="button" class="btn btn-primary search" id="search">搜索</button>
+                            </div>
+                        </form>
+                    <ul class="navbar-nav ml-auto">
+                            <button id="friendButton" type="button" class="btn btn-primary " style="margin-left:10px;margin-right: 10px;display: none">
+                                    好友申请 <span id="newFriend" class="badge badge-light">new!</span>
+                                  </button>
+                            <div class="btn-group group" >
+                                    <button class="btn   btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown">
+                                        个人信息
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right ">
+                                        <a class="dropdown-item" href="/info/editinfoview">编辑资料</a>
+                                        <a class="dropdown-item" href="/user/quit">退出账号</a>
+                                    </div>
+                                </div>
+                
+                    </ul>
+                </div>
+            </nav>
+        
+    <div class="container">
+        <blockquote class="blockquote " style="margin: 20px 20px 50px 20px">
+            <h2 id="blogname"></h2>
+            <footer class="blockquote-footer text-center" id="slogan"> </footer>
+        </blockquote>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 ">
+                <div class="row">
+                    <div class="col-sm-12  text-center leftside-card" style="padding: 20px">
+                        <div>
+                            <img id="avatar" alt="头像" height="100px" width="100px" style="margin-bottom: 20px" src="">
+
+                        </div>
+                        <div class="row" style="margin-bottom: 20px">
+                            <div class="col-sm-6 line"><a id="myfriend"><strong id="friend"></strong></a>
+                                <div>好友</div>
+                            </div>
+
+
+
+                            <div class="col-sm-6"><strong id="essay"></strong>
+                                <div>文章</div>
+                            </div>
+                        </div>
+                        <div>
+                            <p id="nickname"></p>
+                            <p id="gender"></p>
+                            <p id="birthday"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-7  text-center">
+
+
+                <div class="center-card" style="padding: 20px 10px 20px 10px" >
+                    <h3 class="text-left">文章列表</h3>
+                    <button id="write" type="button" class="btn btn-primary">写文章</button>
+                    <ul id="center">
+
+                    </ul>
+                   
+
+                </div>
+
+
+            </div>
+            <div class="col-sm-3 rightside-card">
+                <h3 class="text-center" style="padding: 20px 0 10px">好友动态</h3>
+                <div style="height: 350px; overflow-y: auto">
+                    <div id="right">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</body>
+
+
+
+</html>

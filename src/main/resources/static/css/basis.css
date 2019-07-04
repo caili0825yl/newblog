@@ -1,0 +1,62 @@
+
+.login{
+    margin-bottom: 5px;
+}
+
+
+.search{
+    margin-left: 2px;
+}
+.alert{
+    max-height: 10px;
+    line-height: 0;
+   padding: 1rem 1.25rem;
+   display: none;
+}
+.btn-outline-primary {
+    color: #007bff;
+    float: right;
+    max-width: 100px
+  }
+  
+  .btn-outline-primary:hover {
+    color: #6c757d;
+    background-color: transparent;
+  }
+  
+  .btn-outline-primary:focus, .btn-outline-primary.focus {
+    box-shadow:none;
+  }
+  
+  .btn-outline-primary.disabled, .btn-outline-primary:disabled {
+    color: #6c757d;
+    background-color: transparent;
+  }
+  
+  .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-primary.dropdown-toggle {
+    color: #6c757d;
+    background-color: transparent;
+  }
+  
+  .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-primary.dropdown-toggle:focus {
+    box-shadow: none;
+  }
+  h4{
+    display: inline-block;
+    margin-right: 5px
+  }
+.registerInput{
+    margin-bottom: 5px;
+}
+
+.forget:hover{
+    color: #005cbf;
+    cursor:pointer;
+}
+.expand{
+    position:absolute;
+    right:5px;
+    bottom:5px;
+}
