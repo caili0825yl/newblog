@@ -2,6 +2,7 @@ package com.player.blog.Controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.player.blog.POJO.ArticlePage;
 import com.player.blog.POJO.DO.ArticleDO;
 import com.player.blog.POJO.VO.ArticleVO;
 import com.player.blog.Service.ArticleService;
@@ -103,16 +104,22 @@ public class ArticleController {
      */
     @ResponseBody
     @RequestMapping("/getarticlelist")
-    public List<ArticleVO> getArticleList(@RequestParam(value = "username") String username,@RequestParam(value = "public",required = false) Byte open){
-        List<ArticleVO> list;
-        if (open!=null){
-            list=articleService.getArticleList(username);
+    public ArticlePage getArticleList(@RequestParam(value = "page") int page,@RequestParam(value = "username") String username,@RequestParam(value = "public",required = false) Byte open){
+        ArticlePage articlePage;
+        if (open==null){
+
+
+            articlePage=articleService.getArticleList(username,page);
 
         }else {
-            list=articleService.getArticleList(username);
+
+            articlePage=articleService.getPublicArticle(username,page);
 
         }
-            return list;
+
+
+        return articlePage;
+
     }
 
     /**

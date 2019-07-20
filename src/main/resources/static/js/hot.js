@@ -12,7 +12,7 @@ $(function(){
                 $('#main').append(" <div class=\"card\"><div style=\"margin-left:20px\">"+
 
                     "<div><a href=\"/article/readview?id="+val.id+"\"><h4 style=\"display: inline-block\">"+val.title+"</h4></a>"+
-                        "<span class=\"username\">作者："+val.username+"</span> </div><div id=\""+val.id+"\">"+val.first+"</div> <button name=\""+val.id+"\"  type=\"button\" class=\"btn btn-outline-primary border-0 expand\">"+
+                        "<div>作者："+val.username+"</div> </div><div id=\""+val.id+"\">"+val.first+"</div> <button name=\""+val.id+"\"  type=\"button\" class=\"btn btn-outline-primary border-0 expand\">"+
                         "阅读全文</button></div> </div>" )
 
                 
@@ -39,7 +39,7 @@ $(function(){
                         $('#main').append(" <div class=\"card\"><div style=\"margin-left:20px\">"+
         
                             "<div><a href=\"/article/readview?id="+val.id+"\"><h4 style=\"display: inline-block\">"+val.title+"</h4></a>"+
-                                "<span class=\"username\">作者："+val.username+"</span> </div><div id=\""+val.id+"\">"+val.first+"</div> <button name=\""+val.id+"\"  type=\"button\" class=\"btn btn-outline-primary border-0 expand\">"+
+                                "<div>作者："+val.username+"</div> </div><div id=\""+val.id+"\">"+val.first+"</div> <button name=\""+val.id+"\"  type=\"button\" class=\"btn btn-outline-primary border-0 expand\">"+
                                 "阅读全文</button></div> </div>" )
         
                         

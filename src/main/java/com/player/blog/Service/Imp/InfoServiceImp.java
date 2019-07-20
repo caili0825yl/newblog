@@ -28,14 +28,14 @@ public class InfoServiceImp implements InfoService {
         Base64.Decoder decoder = Base64.getDecoder();
         avatar = avatar.substring(23);
         byte[] imgByte = decoder.decode(avatar);
-        if(informationDOMapper.selectByPrimaryKey(username).getAvatar().equals("/default.jpg")){
+        if(informationDOMapper.selectByPrimaryKey(username).getAvatar().equals("/img/default.jpg")){
             InformationDO informationDO=new InformationDO();
             informationDO.setUsername(username);
             informationDO.setAvatar("/"+username+".jpg");
             informationDOMapper.updateByPrimaryKeySelective(informationDO);
         }
         try {
-            FileOutputStream out = new FileOutputStream("F:/avatar/"+username+".jpg");
+            FileOutputStream out = new FileOutputStream("/home/avatar/"+username+".jpg");
             out.write(imgByte);
             out.close();
         } catch (Exception e) {

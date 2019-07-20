@@ -123,4 +123,13 @@ private InfoService infoService;
 
 
     }
+
+    @ResponseBody
+    @RequestMapping("/deny")
+    public void  deny(@RequestParam(value = "username")String username,@RequestParam( "friend")String friend){
+        friendService.deny(username,friend);
+
+
+    }
+
 }

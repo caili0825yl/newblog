@@ -79,4 +79,13 @@ public class FriendServiceImp implements FriendService {
         friendDO.setApply((byte)1);
         friendDOMapper.updateByPrimaryKeySelective(friendDO);
     }
+
+    @Override
+    public void deny(String username, String friend) {
+        FriendDO friendDO=new FriendDO();
+        friendDO.setUsername(username);
+        friendDO.setFriend(friend);
+
+        friendDOMapper.deny(friendDO);
+    }
 }

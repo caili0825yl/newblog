@@ -12,7 +12,8 @@ $(function(){
                 $.each(data,function(i,val){
 
                     $("#main").append("<li><img height=\"50px\" width=\"50px\" src=\""+val.avatar+"\"><a href=\"/user/visitview?username="+val.username+"\">" + val.nickname + "</a>"+
-                    "<button type=\"button\" id=\""+val.username+"\" class=\"add\">加为好友</button></li>");
+                    "<button class=\"add btn btn-success \" type=\"button\" style=\"margin:0px 10px\" name=\""+val.username+"\"  id=\"add"+val.username+"\">加为好友</button>"+
+                    "<button class=\"deny btn btn-danger\" type=\"button\"  name=\""+val.username+"\" id=\"deny"+val.username+"\">拒绝</button></li>");
     
                 })
             }
@@ -23,9 +24,12 @@ $(function(){
     })
 
     $(".container").on("click",".add",function (){
+        var i = $(this).attr('name');
+
         $(this).attr("disabled",true);
         $(this).text("已添加");
-        var i = $(this).attr('id');
+        $("#deny"+i).css("display","none");
+        
         var bt = $(this);
         $.ajax({
             data:{
@@ -41,5 +45,24 @@ $(function(){
 
 
     })
+    $(".container").on("click",".deny",function (){
+        var i = $(this).attr('name');
+        $(this).attr("disabled",true);
+        $(this).text("已拒绝");
+        $("#add"+i).css("display","none");
+        var bt = $(this);
+        $.ajax({
+            data:{
+                username:$.cookie("user"),
+                friend:i
+            },
+            url:"/friend/deny",
+            type:"POST"
+            
+    
+        }) 
 
+
+
+    })
 })

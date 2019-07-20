@@ -12,7 +12,8 @@ $(function(){
             url:"/article/getarticle",
             success:function(data){
                 bloguser=data.username;
-                
+                var like=data.like;
+
                 if(data.username!=$.cookie("user")){
                     
                     
@@ -23,8 +24,9 @@ $(function(){
                         success:function(data){
                            if(data=="yes"){
                             $("#likebt").attr("disabled","true");
-                            $("#likebt").text("已点赞");
-        
+                            $("#likebt").html("已点赞"+" <span class=\"badge badge-light\" id=\"like\"></span>");
+                            $("#like").text(like);
+
                            }
                         }
                     })  
@@ -71,9 +73,10 @@ $(function(){
                 type:"POST",
                 url:"/like/like",
                 success:function(){
-                    $("#likebt").attr("disabled","true");
-                    $("#likebt").text("已点赞");
                     var like=$("#like").text();
+                    $("#likebt").attr("disabled","true");
+                    $("#likebt").html("已点赞"+" <span class=\"badge badge-light\" id=\"like\"></span>");
+                    
                     $("#like").text(parseInt(like)+1);
 
 

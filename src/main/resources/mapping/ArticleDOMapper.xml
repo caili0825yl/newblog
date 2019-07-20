@@ -202,6 +202,7 @@
     select
     id, username, time, title,content
     from article
+    where open=1
     order by recommend DESC ,`like` DESC,`time` DESC
 
 
@@ -266,6 +267,6 @@
              open="(" close=")" separator=",">
       #{item}
     </foreach>
-
+    order by time desc limit 20
   </select>
 </mapper>

@@ -266,6 +266,10 @@ $(function () {
     var registercurCount;
 
     $("#getCaptcha").click(function () {
+        if(isNull($('#email').val())==true ){
+            alert("请输入邮箱！");
+            return false;
+        }
         getCaptcha( $('#email').val())
         registercurCount = registercount;
 
@@ -292,6 +296,12 @@ $(function () {
     var forgetcurCount;
 
     $("#forgetGetCaptcha").click(function () {
+        if(isNull($('#forgetEmail').val())==true ){
+            alert("请输入邮箱！");
+            return false;
+        }
+
+
         getCaptcha( $('#forgetEmail').val())
 
         forgetcurCount = forgetcount;
@@ -331,8 +341,6 @@ $(function () {
             success: function (data) {
 
                 $("#"+i).html(data);
-                var h = $("#"+i).parent().height() + 100;
-                $("#"+i).parent().parent().height(h);
                 
                 
 

@@ -16,11 +16,15 @@
 </head>
 <body>
     <style type="text/css">
-       
+        .placeholderDiv{
+            border: solid gray 1px;
+            min-height: 500px;
+        }
         .placeholderDiv:empty::before{
             color:lightgrey;
             content:attr(placeholder);
         }
+    
     </style>
     <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd; ">
         <div class="container">
@@ -64,16 +68,17 @@
     </nav>
 <div class="container">
     <div>
-        <div>
-            <button id="image" type="button" class="btn btn-primary" data-toggle="modal" data-target="#imagemodal">插入图片</button>
-        </div>
-        <input type="text" placeholder="标题（限50字）" maxlength="50" id="title">
-        <div id="content" class="placeholderDiv" contenteditable="true"  placeholder="请输入正文（限5000字）"></div>
+        
+        <input type="text" placeholder="标题（限50字）" maxlength="50" id="title" class="form-control" style="margin: 10px 0px">
+        <div style="margin-bottom: 10px">
+                <button id="image" type="button" class="btn btn-primary" data-toggle="modal" data-target="#imagemodal">插入图片</button>
+            </div>
+        <div id="content" class="placeholderDiv" contenteditable="true"  placeholder="请输入正文（限5000字)"></div>
         <div class="form-group form-check">
             <input class="form-check-input" type="checkbox" id="privacy"  value="on">仅好友可见？
         </div>
         
-        <button id="confirm">确定</button>
+        <button id="confirm" class="btn btn-primary">确定</button>
     </div>
 </div>
 

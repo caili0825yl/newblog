@@ -12,4 +12,5 @@ public interface FriendService {
     void apply(String username,String friend);
     List<String> getApplyList(String username);
     void add(String username,String friend);
+    void deny(String username,String friend);
 }

@@ -1,8 +1,11 @@
 package com.player.blog.Service.Imp;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.player.blog.Dao.ArticleDOMapper;
 import com.player.blog.Dao.InformationDOMapper;
 import com.player.blog.DateFormat;
+import com.player.blog.POJO.ArticlePage;
 import com.player.blog.POJO.DO.ArticleDO;
 import com.player.blog.POJO.VO.ArticleVO;
 import com.player.blog.Service.ArticleService;
@@ -14,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 @Service
 @Transactional(isolation = Isolation.READ_COMMITTED)
 public class ArticleServiceImp implements ArticleService {
@@ -46,8 +51,15 @@ public class ArticleServiceImp implements ArticleService {
                 articleVO.setUsername(nickname);
                 String first;
                 int exist=articleDO.getContent().indexOf("<img");
-                if(exist==-1){
-                    first=articleDO.getContent().substring(0,exist)+"...";
+               
+                if(exist!=-1){
+                    if(exist<50){
+                        first=articleDO.getContent().substring(0,exist)+"...";
+
+                    }else {
+                        first=articleDO.getContent().substring(0,50)+"...";
+
+                    }
                 }
                 else if (articleDO.getContent().length()>=50){
                     first=articleDO.getContent().substring(0,50)+"...";
@@ -71,22 +83,24 @@ public class ArticleServiceImp implements ArticleService {
     }
 
     @Override
-    public List<ArticleVO> getArticleList(String username) {
+    public ArticlePage getArticleList(String username, int page) {
+        PageHelper.startPage(page,10);
         List<ArticleDO> doList=articleDOMapper.getArticle(username);
-        if (doList==null){
+        PageInfo<ArticleDO> pageInfo=new PageInfo<>(doList);
+        if (pageInfo.getList()==null){
             return null;
         }else{
             List<ArticleVO> list=new ArrayList<>();
-            ArticleVO articleVO=null;
-            for(ArticleDO articleDO:doList){
-                articleVO=new ArticleVO();
+
+            for(ArticleDO articleDO:pageInfo.getList()){
+                ArticleVO  articleVO=new ArticleVO();
 
                 articleVO.setId(articleDO.getId());
                 articleVO.setTitle(articleDO.getTitle());
                 list.add(articleVO);
             }
-
-            return list;
+            ArticlePage articlePage=new ArticlePage(list,pageInfo.isIsFirstPage(),pageInfo.isIsLastPage(),pageInfo.getPages());
+            return articlePage;
         }
 
     }
@@ -117,7 +131,10 @@ public class ArticleServiceImp implements ArticleService {
 
     @Override
     public List<ArticleVO> getHot() {
+
+
         List<ArticleDO> doList=articleDOMapper.getHot();
+
         List<ArticleVO> list=new ArrayList<>();
         ArticleVO articleVO=null;
         String nickname="";
@@ -139,8 +156,15 @@ public class ArticleServiceImp implements ArticleService {
                articleVO.setUsername(nickname);
                String first;
                 int exist=articleDO.getContent().indexOf("<img");
-               if(exist==-1){
-                    first=articleDO.getContent().substring(0,exist)+"...";
+               if(exist!=-1){
+                   if(exist<200){
+                       first=articleDO.getContent().substring(0,exist)+"...";
+
+                   }else{
+                       first=articleDO.getContent().substring(0,200)+"...";
+
+                   }
+
                }
                else if (articleDO.getContent().length()>=200){
                     first=articleDO.getContent().substring(0,200)+"...";
@@ -155,22 +179,27 @@ public class ArticleServiceImp implements ArticleService {
     }
 
     @Override
-    public List<ArticleVO> getPublicArticle(String username) {
+    public ArticlePage getPublicArticle(String username,int page) {
+        PageHelper.startPage(page,10);
         List<ArticleDO> doList=articleDOMapper.getPublicArticle(username);
-        if (doList==null){
+        PageInfo<ArticleDO> pageInfo=new PageInfo<>(doList);
+        if (pageInfo.getList()==null){
             return null;
         }else{
             List<ArticleVO> list=new ArrayList<>();
-            ArticleVO articleVO;
-            for(ArticleDO articleDO:doList){
-                articleVO=new ArticleVO();
+
+            for(ArticleDO articleDO:pageInfo.getList()){
+                ArticleVO  articleVO=new ArticleVO();
 
                 articleVO.setId(articleDO.getId());
                 articleVO.setTitle(articleDO.getTitle());
                 list.add(articleVO);
             }
+            List<Object> a=new ArrayList<>();
+            a.add(list);
 
-            return list;
+            ArticlePage articlePage=new ArticlePage(list,pageInfo.isIsFirstPage(),pageInfo.isIsLastPage(),pageInfo.getPages());
+            return articlePage;
         }
     }
 

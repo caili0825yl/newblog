@@ -25,53 +25,54 @@ function textInit(e) {
   }
 }
 $( document ).on( "paste", "#content", function(e) {
-  //去除复制样式
-  textInit(e);
-  //去除复制过来的 标签
-  if($('#content').attr('list-layout') == 'true'){ //如果可编辑div .TextInner中存在li
-      //找到所有的li
-      var $lichild = $('#content').find('li');
-      $lichild.each(function () {
-          //获取li 的子元素var htmlunList = '';
-          var $childEles = $(this).children().not('br');
-          var htmlunList = '';
-          htmlunList +=   $(this)
-              .clone()    //复制元素
-              .children() //获取所有子元素
-              .remove()   //删除所有子元素
-              .end()  //回到选择的元素
-              .html();//获取文本值
-          if($childEles>0){
-              $childEles.each(function(){
-                  htmlunList +=$(this).text();
-              })
-          }
-          $(this).html(htmlunList);
-      })
-  }else{
-      var $childEles = $('#content').children().not('br');
-      if($childEles.length>0){
-          var htmlunList = '';
-          htmlunList +=   $('#content')
-              .clone()    //复制元素
-              .children() //获取所有子元素
-              .remove()   //删除所有子元素
-              .end()  //回到选择的元素
-              .html();//获取文本值
-          $childEles.each(function(){
-              var tagname =  $(this)[0].tagName;
-              htmlunList += $(this).text();
-              /*if(tagname == 'SPAN'){
-                  htmlunList += $(this).text();
-              }
-              if(tagname == 'DIV'){
-                  htmlunList +='<br>'+ $(this).text();
-              }*/
-          });
-          $('#content').html(htmlunList);
-      }
+    textInit(e);
 
-  }
+  //去除复制样式
+  if($('.TextInner').attr('list-layout') == 'true'){ //如果可编辑div .TextInner中存在li
+    //找到所有的li
+    var $lichild = $('.TextInner').find('li');
+    $lichild.each(function () {
+        //获取li 的子元素var htmlunList = '';
+        var $childEles = $(this).children().not('br');
+        var htmlunList = '';
+        htmlunList +=   $(this)
+            .clone()    //复制元素
+            .children() //获取所有子元素
+            .remove()   //删除所有子元素
+            .end()  //回到选择的元素
+            .html();//获取文本值
+        if($childEles>0){
+            $childEles.each(function(){
+                htmlunList +=$(this).text();
+            })
+        }
+        $(this).html(htmlunList);
+    })
+}else{
+    var $childEles = $('.TextInner').children().not('br');
+    if($childEles.length>0){
+        var htmlunList = '';
+        htmlunList +=   $('.TextInner')
+            .clone()    //复制元素
+            .children() //获取所有子元素
+            .remove()   //删除所有子元素
+            .end()  //回到选择的元素
+            .html();//获取文本值
+        $childEles.each(function(){
+            var tagname =  $(this)[0].tagName;
+            htmlunList += $(this).text();
+            /*if(tagname == 'SPAN'){
+                htmlunList += $(this).text();
+            }
+            if(tagname == 'DIV'){
+                htmlunList +='<br>'+ $(this).text();
+            }*/
+        });
+        $('.TextInner').html(htmlunList);
+    }
+
+}
+
   //最后将容器高度 调整为自适应撑起的高度
   //$(clickTextThis).css('height',$('#content').css('height'));
   //$('.editTextBox').css('height',$('#content').css('height'));
@@ -99,7 +100,7 @@ $( document ).on( "paste", "#content", function(e) {
     $("#insert").click(function(){
       
         
-     $('#content').append("<img src=\""+$("#src").val()+"\"   width=\"60%\"  >");
+     $('#content').append("<img class=\"image\"  src=\""+$("#src").val()+"\"     >");
 
     })
     

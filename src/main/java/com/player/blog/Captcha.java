@@ -11,8 +11,12 @@ public class Captcha {
         htmlEmail.setCharset("utf-8");
         try {
             htmlEmail.addTo(email);
+            htmlEmail.setSSLOnConnect(true);
+            htmlEmail.setSslSmtpPort("465");
+            System.setProperty("mail.smtp.ssl.enable", "true");
+
             htmlEmail.setFrom("465203412@qq.com","OTAKU@部落格");
-            htmlEmail.setAuthentication("465203412@qq.com","thgtnvbkyiqqbjhg");
+            htmlEmail.setAuthentication("465203412@qq.com","dwevqchqprplbijc");
             htmlEmail.setSubject("验证码");
             String code=getCode(4);
             htmlEmail.setMsg("您的验证码为："+code);

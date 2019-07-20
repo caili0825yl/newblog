@@ -1,11 +1,13 @@
 $(function () {
-   
     $("#write").click(function(){
         $(location).attr('href', '/article/writeview');
     })
 
+    var page=1;
+
     $.ajax({
         data: {
+            
             username: $.cookie("user")
         },
         url: "/info/getinfo",
@@ -35,19 +37,25 @@ $(function () {
 
     $.ajax({
         data: {
+            page:page,
             username: $.cookie("user")
         },
         url: "/article/getarticlelist",
         type: "GET",
         success: function (data) {
-            if (data == null) {
+            if(data.last==true){
+                $("#next").css("visibility","hidden");
+            }
+
+
+            if (data.list == null) {
                 return false;
             } else {
-                $.each(data, function (i, val) {
+                $.each(data.list, function (i, val) {
                     $("#center").append("<li><a href=\"/article/readview?id="+val.id+"\">" + val.title + "</a></li>")
                 })
             }
-
+            
 
 
         }
@@ -80,4 +88,102 @@ $(function () {
 
         }
     })
+$("#next").click(function(){
+    page=page+1;
+   
+    $.ajax({
+        data: {
+            page:page,
+            username: $.cookie("user")
+        },
+        url: "/article/getarticlelist",
+        type: "GET",
+        success: function (data) {
+            if (data.list == null) {
+                return false;
+            } else {
+                $.each(data.list, function (i, val) {
+                    $("#center").empty();
+                    $("#center").append("<li><a href=\"/article/readview?id="+val.id+"\">" + val.title + "</a></li>")
+                })
+            }
+
+            if(data.first==true&&data.last==true){
+                $("#next").css("visibility","hidden");
+                $("#last").css("visibility","hidden");
+                
+            }else
+            if(data.last==true){
+
+                $("#next").css("visibility","hidden");
+                $("#last").css("visibility","visible");
+            }else
+
+            if(data.first==true){
+                
+                $("#last").css("visibility","hidden");
+                $("#next").css("visibility","visible");
+
+            }else{
+                $("#last").css("visibility","visible");
+                $("#next").css("visibility","visible");
+            }
+            
+
+
+        }
+    })
+})
+
+
+
+$("#last").click(function(){
+    page=page-1;
+    $.ajax({
+        data: {
+            page:page,
+            username: $.cookie("user")
+        },
+        url: "/article/getarticlelist",
+        type: "GET",
+        success: function (data) {
+
+            if (data.list == null) {
+                return false;
+            } else {
+                $.each(data.list, function (i, val) {
+                    $("#center").empty();
+                    $("#center").append("<li><a href=\"/article/readview?id="+val.id+"\">" + val.title + "</a></li>")
+                })
+            }
+
+            if(data.first==true&&data.last==true){
+                $("#next").css("visibility","hidden");
+                $("#last").css("visibility","hidden");
+
+            }else
+            if(data.last==true){
+
+                $("#next").css("visibility","hidden");
+                $("#last").css("visibility","visible");
+
+            }else
+
+            if(data.first==true){
+
+                $("#last").css("visibility","hidden");
+                $("#next").css("visibility","visible");
+
+            }else{
+                $("#last").css("visibility","visible");
+                $("#next").css("visibility","visible");
+            }
+
+           
+            
+
+
+        }
+    })
+})
 })

@@ -96,7 +96,7 @@
             <div class="col-sm-7  text-center">
 
 
-                <div class="center-card" style="padding: 20px 10px 20px 10px" >
+                <div class="center-card" style="padding: 20px 10px 20px 10px;position: relative" >
                     <h3 class="text-left">文章列表</h3>
                     <button id="write" type="button" class="btn btn-primary">写文章</button>
                     <ul id="center">
@@ -104,7 +104,12 @@
                     </ul>
                    
 
-                </div>
+                      <div  style="position: absolute;bottom:0;left:0;right:0;margin-bottom:20px">
+                            <button  class="btn btn-primary" type="button" id="next">下一页</button>
+                            <button  style="visibility: hidden" class="btn btn-primary" type="button" id="last">上一页</button>
+                        
+                    </div>
+            </div>
 
 
             </div>

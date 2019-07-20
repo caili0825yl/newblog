@@ -238,26 +238,35 @@
 </div>
 
 <div class="container">
-    <div id="admin" style="display: none">
+    <div class="row">
+        <button class="btn btn-primary" id="back">返回作者主页</button>
+    
+    <span id="admin" style="display: none" class="ml-auto">
             <button class="btn btn-primary" id="edit">编辑</button>
             <button class="btn btn-danger" id="delete" data-toggle="modal" data-target="#deletemodal">删除</button>
-    </div>
- 
+    </span>
+</div>
 
 
-    <button class="btn btn-primary" id="back">返回作者主页</button>
 
-    <button id="likebt" class="btn btn-primary">赞</button>
-    <span id="like"></span>
-  
+    
+    
+   <!--<span id="like"></span>
+  <button id="likebt" class="btn btn-primary">赞</button>--> 
     <div>
-        <div id="title"></div>
-        <div id="time"> </div>
+        <h2 id="title" class="text-center"></h2>
+        <div id="time" class="text-center"> </div>
         <div id="content">
 
         </div>
     </div>
-  
+    <div class="text-center" style="margin: 2%">
+    <button type="button"  id="likebt" class="btn btn-success btn-lg">
+            赞
+        <span class="badge badge-light" id="like"></span>
+          </button>
+        </div>
+
 
     <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
